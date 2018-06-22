@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>Frequency Counter</title>
+    </head>
+    <body>
+        <textarea rows="15" cols="60" id="textInput"></textarea><br>
+        <button id="countButton">Count Frequencies</button>
+
+        <span id="lettersDiv"></span>
+        <div id="wordsDiv"></div>
+        <script>
+            document.getElementById("countButton").onclick = function() {
+                var typedText = document.getElementById("textInput").value;
+                typedText = typedText.toLowerCase();
+                typedText = typedText.replace(/[^a-z'\s]+/g, "");
+                var letterCounter ={};
+                for(let i = 0; i < typedText.length; i++) {
+                    var currentLetter = typedText[i];
+                    if(letterCounter[currentLetter] === undefined) {
+                        letterCounter[currentLetter] = 1;
+                    } else {
+                        letterCounter[currentLetter]++;
+                    }
+
+                }
+                for(letter in letterCounter) {
+                        console.log(letter);
+                        let span = document.createElement("span");
+                        let textContent = document.createTextNode('"' + letter + "\": " + letterCounter[letter] + ", ");
+                        span.appendChild(textContent);
+                        document.getElementById("lettersDiv").appendChild(span);
+                }
+                let wordCount ={};
+                for(let i = 0; i < typedText.length; i++) {
+                    var currentword = typedText[i];
+                    if(wordCount[currentword] === undefined) {
+                        wordCount[currentword] = 1;
+                    } else {
+                        wordCount[currentword]++;
+                    }
+
+                }
+                for(word in wordCount) {
+                        console.log(word);
+                        let span2 = document.createElement("span");
+                        let textContent = document.createTextNode('"' + word + "\": " + wordCount[word] + ", ");
+                        span2.appendChild(textContent);
+                        document.getElementById("wordsDiv").appendChild(span2);
+                }
+            }
+        </script>
+
+    </body>
+</html>
