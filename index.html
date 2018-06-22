@@ -30,6 +30,7 @@
                         span.appendChild(textContent);
                         document.getElementById("lettersDiv").appendChild(span);
                 }
+                var words = typedText.split(/\s/);
                 let wordCount ={};
                 for(let i = 0; i < typedText.length; i++) {
                     var currentword = typedText[i];
